@@ -11,7 +11,7 @@ const server = http.createServer(app);
 // Set up Socket.io for real-time bidirectional event-based communication
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:3000', // Allow requests from frontend running on this origin
+        origin: 'http://localhost:5174,http://localhost:5173', // Allow requests from frontend running on this origin
         methods: ['GET', 'POST']
     }
 });
@@ -26,7 +26,7 @@ app.get('/', (req, res) => {
 
 // Configure the serial port (update the port and baudRate based on your hardware setup)
 const port = new SerialPort({
-    path: 'COM3', // Replace with your actual serial port path
+    path: 'COM9', // Replace with your actual serial port path
     baudRate: 9600 // Must match the rate set on the microcontroller
 });
 
