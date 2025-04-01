@@ -11,7 +11,7 @@ const server = http.createServer(app);
 // Set up Socket.io for real-time bidirectional event-based communication
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:5174,http://localhost:5173', // Allow requests from frontend running on this origin
+        origin: 'http://localhost:5173', // Allow requests from frontend running on this origin
         methods: ['GET', 'POST']
     }
 });
@@ -35,8 +35,8 @@ const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
 
 // Listen for data from the serial port and send it to the frontend
 parser.on('data', (data) => {
-    console.log('Received data:', data);
-    io.emit('signalData', data); // Emit incoming data to the frontend
+    console.log(data)
+    io.emit('signalData', data); // Emits incoming data to the frontend
 });
 
 // Handle socket connections
